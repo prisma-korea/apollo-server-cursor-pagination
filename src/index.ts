@@ -135,19 +135,17 @@ export function resolveArgs(args: ConnectionArguments): {
   return newArgs;
 }
 
-export async function relayPagination({
-  prisma,
-  args,
-  type,
-}: {
-  prisma: PrismaClient;
-  args: ConnectionArguments;
-  type: string;
-}): Promise<Connection<{id: string}>> {
+export async function relayPagination<T>(
+  prisma: PrismaClient,
+  args: ConnectionArguments,
+  type: string,
+  options?: Record<string, unknown>,
+): Promise<Connection<T>> {
   const resolved = resolveArgs(args);
 
   const nodes = await prisma[type].findMany({
     ...resolved,
+    ...options,
   });
 
   const hasPreviousPage = !!args.after;
