@@ -41,4 +41,4 @@ const resolver: Resolver = {
 
 
 ## Limitation
-This function is only support forward pagination. If you want to know more about this, please then check specification [here](https://relay.dev/graphql/connections.htm).
+This function is only support forward pagination. If you want to know more about this, please check specification [here](https://relay.dev/graphql/connections.htm).
